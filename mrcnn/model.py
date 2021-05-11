@@ -2125,14 +2125,14 @@ class MaskRCNN():
         # Exclude some layers
         if exclude:
             layers = filter(lambda l: l.name not in exclude, layers)
-	
+
         # if by_name:
             # saving.load_weights_from_hdf5_group_by_name(f, layers)
         # else:
             # saving.load_weights_from_hdf5_group(f, layers)
-	
-	keras_model.load_weights(filepath, by_name=by_name)
-	
+
+        keras_model.load_weights(filepath, by_name=by_name)
+
         if hasattr(f, 'close'):
             f.close()
 
