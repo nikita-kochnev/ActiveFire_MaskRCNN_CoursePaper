@@ -91,7 +91,7 @@ class BalloonDataset(utils.Dataset):
 
         # Train or validation dataset?
         assert subset in ["train", "val"]
-        dataset_dir = os.path.join(dataset_dir, subset)
+        dataset_dir = os.path.join(dataset_dir, subset, "images")
        
         image_ids = os.listdir(dataset_dir)
               
@@ -99,7 +99,7 @@ class BalloonDataset(utils.Dataset):
             self.add_image(
                 "balloon",
                 image_id=image_id,
-                path=os.path.join(dataset_dir, image_id, "images"))
+                path=os.path.join(dataset_dir, image_id))
 
         # Load annotations
         # VGG Image Annotator (up to version 1.6) saves each image in the form:
