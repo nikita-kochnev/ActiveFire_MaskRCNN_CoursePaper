@@ -170,10 +170,10 @@ class BalloonDataset(utils.Dataset):
 
         # Read mask files from .png image
         mask = []
-        for f in next(os.walk(mask_dir))[2]:
-            if f.endswith(".png"):
-                m = skimage.io.imread(os.path.join(mask_dir, f)).astype(np.bool)
-                mask.append(m)
+        # for f in next(os.walk(mask_dir))[2]:
+            # if f.endswith(".png"):
+        m = skimage.io.imread(os.path.join(mask_dir, info['image_id'])).astype(np.bool)
+        mask.append(m)
         mask = np.stack(mask, axis=-1)
         # Return mask, and array of class IDs of each instance. Since we have
         # one class ID, we return an array of ones
