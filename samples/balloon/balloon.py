@@ -169,16 +169,15 @@ class BalloonDataset(utils.Dataset):
         mask_dir = os.path.join(os.path.dirname(os.path.dirname(info['path'])), "masks")
 
         # Read mask files from .png image
-        mask = []
+        # mask = []
         # for f in next(os.walk(mask_dir))[2]:
             # if f.endswith(".png"):
         mask_name = str(info['id']).replace('.png', '_gt.png')
-        m = skimage.io.imread(os.path.join(mask_dir, mask_name)).astype(np.bool)
-        mask.append(m)
-        mask = np.stack(mask, axis=-1)
+        mask = skimage.io.imread(os.path.join(mask_dir, mask_name))
+        # mask.append(m)
+        # mask = np.stack(mask, axis=-1)
         # Return mask, and array of class IDs of each instance. Since we have
         # one class ID, we return an array of ones
-        return mask, np.ones([mask.shape[-1]], dtype=np.int32)
        
         # mask = np.zeros([info["height"], info["width"], len(info["polygons"])],
                         # dtype=np.uint8)
@@ -189,7 +188,7 @@ class BalloonDataset(utils.Dataset):
 
         # Return mask, and array of class IDs of each instance. Since we have
         # one class ID only, we return an array of 1s
-        # return mask.astype(np.bool), np.ones([mask.shape[-1]], dtype=np.int32)
+        return mask.astype(np.bool), np.ones([mask.shape[-1]], dtype=np.int32)
 
     def image_reference(self, image_id):
         """Return the path of the image."""
