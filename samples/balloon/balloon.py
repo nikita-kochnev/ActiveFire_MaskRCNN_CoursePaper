@@ -93,7 +93,7 @@ class BalloonDataset(utils.Dataset):
         assert subset in ["train", "val"]
         dataset_dir = os.path.join(dataset_dir, subset, "images")
        
-        image_ids = os.listdir(dataset_dir)
+        image_ids = next(os.walk(dataset_dir))[2]
               
         for image_id in image_ids:
             self.add_image(
