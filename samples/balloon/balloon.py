@@ -99,7 +99,7 @@ class BalloonDataset(utils.Dataset):
             self.add_image(
                 "balloon",
                 image_id=image_id,
-                path=os.path.join(dataset_dir, image_id))
+                path=os.path.join(dataset_dir, image_id, "images"))
 
         # Load annotations
         # VGG Image Annotator (up to version 1.6) saves each image in the form:
