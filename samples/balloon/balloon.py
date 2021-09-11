@@ -172,7 +172,8 @@ class BalloonDataset(utils.Dataset):
         # mask = []
         # for f in next(os.walk(mask_dir))[2]:
             # if f.endswith(".png"):
-        mask_name = str(info['id']).replace('.png', '_gt.png')
+        mask_name = str(info['id']).replace('.jpg', '.png')
+        # mask_name = str(info['id']).replace('.png', '_gt.png')
         mask = skimage.io.imread(os.path.join(mask_dir, mask_name))
         # mask.append(m)
         # mask = np.stack(mask, axis=-1)
